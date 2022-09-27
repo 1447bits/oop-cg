@@ -1,123 +1,108 @@
-// here we are going to create a adress book using cpp
-// functionalities : create record, Delete record, modify record, view book, exit
-
+// this is a array book program that can add delete modify and display array
 
 #include <iostream>
 #include <string>
+
 using namespace std;
 
-class book_operations {
-    
-    public: void add(string *arr, int *len);
-
-};
-void book_operations :: add(string *arr, int *len)
-    {
-        cout<<*len<<endl;    
-    } 
+void display(string arr[], int n){
+    for (int i = 0; i < n; i++){
+        if (arr[i] == ""){
+            cout << endl;
+            return;
+        }
+        cout << "\'" << arr[i] << "\',";
+    }    
+}
 
 int main() {
 
+    string choice;
     int n = 1000;
     string book[n];
+    cout << "\nwelcome to library \n";
+    cout << "Instructions :-\nThis book can take upto 1000 entries, to increase the size of book type \'Size\'\n";
+    cout << "type \"Exit\" to exit\n";
+while (1){
+    cout << "\nchoose \n1 to add new books\n2 to delete a perticular record\n3 to modify records\n4 to display record";
+    cout << "enter your choice : ";
+    cin >> choice;
 
-    book_operations Opr;
-    Opr.add(&book[n], &n);
+// changes the size of book 
+    if (choice == "Size" || choice == "size"){
+        cout<<"\nEnter new size :";
+        cin >> n;
+        cout << "Done ! \n\n";
+        continue;
+    }
 
-    return 0;
+// exit condition
+    if (choice == "exit" || choice == "Exit"){
+        cout << "\nThank you!!\n";
+        break;
+    }
 
+// To add entries
+    if (choice == "1"){
+        for (int i = 0; i < n; i++) {
+            string item;
+            cout << "Enter record : ";
+            cin >> item;
+            if (item == "exit" || item == "Exit"){
+                break;
+            }
+            book[i] = item;
+        }
+        cout<<"Done !\n\n";
+        continue;
+    }
+
+// to delete entries
+    if (choice == "2"){
+        string item; 
+        display(book, n);
+        cout << "Enter item to be deleted : ";
+        cin >> item;
+        int i;
+        for (i = 0; i < n; i++)
+            if (book[i] == item)
+                break;
+        
+        if (i < n){
+            n = n - 1;
+            for (int j = i; j<n; j++){
+                book[j] = book[j + 1];
+            }
+        }
+        cout << "Done !\n\n";
+        continue;
+    }
+
+// modify entries
+    if (choice == "3"){
+        string item, item2;
+        display(book, n);
+        cout << "Modify : ";
+        cin >> item;
+        cout << " --> To : ";
+        cin >> item2;
+        int i;
+        for (i = 0; i < n; i++) 
+            if (item == book[i])
+                break;
+        book[i] = item2;
+        cout << "Done !\n\n";
+        continue;
+    }
+    if (choice == "4"){
+        display(book, n);
+        continue;
+    } else {
+        cout << "Invalid Choice :|";
+        continue;
+    }
+    
 }
 
-
-
-
-
-
-
-
-// New Modification 
-
-// here we are going to create a adress book using cpp
-// functionalities : create record, Delete record, modify record, view book, exit
-
-
-#include <iostream>
-using namespace std;
-
-class book_operations {
-    
-    // // function to add elements to the array 
-    // public: string add(string arr[], int len) {
-
-    //     int count = 0;  // to count the num of elements added
-    //     string item;    // input from user
-
-    // // loop to input the elements to be added  
-    //     for (int i = 0; i <= 1000; i++){
-    //         // cout << length << endl;
-    //         count+=1;
-    //         cout << "Enter record : "; 
-    //         cin>>item;
-    //         if (item == "exit" || item == "Exit"){
-    //             break;
-    //         }
-    //         arr[i] = item;
-    //     }
-
-    // // to display the elements which were added 
-    //     for (int i = 0; i <= 1000; i++){
-    //         if (arr[i] == ""){
-    //             break;
-    //         }
-    //         cout << arr[i] << ", ";
-    //     }
-    //     cout<<endl;
-
-    //     return "done";
-    // }
-
-
-
-
-
-    public: string* add2(int len) {
-        string arr[len];
-        int count = 0;  // to count the num of elements added
-        string item;    // input from user
-
-    // loop to input the elements to be added  
-        for (int i = 0; i <= 1000; i++){
-            // cout << length << endl;
-            count+=1;
-            cout << "Enter record : "; 
-            cin>>item;
-            arr[i] = item;
-        }
-        return arr;
-    }
-
-}; 
-
-int main(){
-
-    int n = 1000;
-    string book[n];
-
-    // object created 
-    book_operations Opr;
-
-    string New[n];
-    string* newArr = Opr.add2(n);
-
-    // // loop to the modified array after addition of th elements 
-    for (int i = 0; i <= n; i++){
-        book[i] = newArr[i];
-    }
-
-    // loop to display add elemets from th efunction from the function returned array to original array.
-    for (int i = 0; i < n; i++){
-        cout << "\"" << newArr[i] << "\" ";
-    }
-
-    return 0;
+return 0;
 }
