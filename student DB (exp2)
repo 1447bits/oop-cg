@@ -1,0 +1,71 @@
+// Develop an object oriented program in C++ to create a database of student information system containing the
+// following information: Name, Roll number, Class, division, Date of Birth, Blood group, Contact address, telephone
+// number, driving license no. etc Construct the database with suitable member functions for initializing and destroying
+// the data viz constructor, default constructor, Copy constructor, destructor, static member functions, friend class, this
+// pointer, inline code and dynamic memory allocation operators-new and delete
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Student {
+    public :
+        string Name;
+        int Roll_no;
+        string Std;
+        char Div;
+        string DOB;
+        string BlookGroup;
+        string Adress;
+        int Tele;
+
+    public: Student(string nm, int rn, string std, char div, string dob, string bg, string add, int tele) {
+        Name = nm;
+        Roll_no = rn;
+        Std = std;
+        Div = div;
+        DOB = dob;
+        BlookGroup = bg;
+        Adress = add;
+        Tele = tele;
+
+    }
+    void display(void){
+        cout << "<---------------------------------------------------->\n";
+        cout << "\n\nHello My Name is " << Name << " Roll.No : " << Roll_no << " I study in " << Std << " Year, Division " << Div << "\n My BloodGroup is " << BlookGroup << " You can find me at " << Adress << ", \ncontact Number : " << Tele << endl;
+        cout << "<---------------------------------------------------->\n";
+    }
+};
+
+void inp(string *nm,int *r,string *st,char *dv,string *d,string *BG,string *a,int *t){
+    cout << "\t\tEnter student info\n";
+    cout << "<---------------------------------------------------->\n";
+    cout << "Name : ";
+    getline (cin, *nm);
+    cout << "Contact Address : ";
+    getline (cin, *a);
+    cout << "Roll No : ";
+    cin >> *r;
+    cout << "Year : ";
+    cin >> *st;
+    cout << "Division : ";
+    cin >> *dv;
+    cout << "Date Of Birth : ";
+    cin >> *d;
+    cout << "Blood Group : ";
+    cin >> *BG;
+    cout << "Telephone Number : ";
+    cin >> *t;
+}
+
+int main(){
+    
+    string list[100];
+    string nam;int rn;string std;char div;string dob;string bg;string add;int tele;
+
+    inp(&nam, &rn, &std, &div, &dob, &bg, &add, &tele);
+    Student object = Student(nam, rn, std, div, dob, bg, add, tele);
+    object.display();
+
+    return 0;
+}
