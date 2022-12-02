@@ -21,7 +21,9 @@ void disp (T1 a, T2 b) {
     cout << "a = " << a << " b = " << b << endl;    
 }
 template <typename T1, typename T2>
-void add (T)
+void add (T1 a, T2 b) {
+    cout << "a + b = " << a+b<< endl;
+}
 
 int main() {
     disp(40, 20);
@@ -30,6 +32,7 @@ int main() {
 // multiple type templete example 
     
     disp(10, "one");
+    add<string>("40", "fourty");
     
     return 0;
 }
