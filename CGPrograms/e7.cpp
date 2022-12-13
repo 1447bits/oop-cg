@@ -1,3 +1,9 @@
+/*
+Write a C++ program to control a ball using arrow keys. Apply the concept of
+polymorphism.
+*/
+
+
 #include<iostream>
 #include<graphics.h>
 #include<stdlib.h>
